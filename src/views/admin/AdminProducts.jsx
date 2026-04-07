@@ -3,6 +3,8 @@ import axios from "axios";
 import * as bootstrap from "bootstrap";
 import ProductModal from "../../components/ProductModal";
 import Pagination from "../../components/Pagination";
+import { useDispatch } from "react-redux";
+import { createAsyncMessage } from "../../slice/messageSlice";
 
 const API_BASE = import.meta.env.VITE_API_BASE;
 const API_PATH = import.meta.env.VITE_API_PATH;
@@ -34,6 +36,7 @@ function AdminProducts() {
   const [pagination, setPagination] = useState({});
 
   const productModalRef = useRef(null);
+  const dispatch = useDispatch();
 
   // 頁面初始化
   useEffect(() => {
@@ -114,6 +117,7 @@ function AdminProducts() {
       setPagination(response.data.pagination);
     } catch (error) {
       console.log("取得資料失敗：", error.response?.data);
+      dispatch(createAsyncMessage(error.response.data));
     }
   };
 
@@ -201,6 +205,7 @@ function AdminProducts() {
     // 建立api連線
     try {
       const response = await axios[method](url, productData);
+      dispatch(createAsyncMessage(response.data))
       getProducts();
       closeModal();
     } catch (error) {

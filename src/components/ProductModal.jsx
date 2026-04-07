@@ -1,14 +1,18 @@
+import { useDispatch } from "react-redux";
+
 function ProductModal({
-    modalType,
-    templateProduct,
-    handleModalInputChange,
-    handleModalImageChange,
-    handleAddImage,
-    handleRemoveImage,
-    updateProduct,
-    delProduct,
-    closeModal
+  modalType,
+  templateProduct,
+  handleModalInputChange,
+  handleModalImageChange,
+  handleAddImage,
+  handleRemoveImage,
+  updateProduct,
+  delProduct,
+  closeModal,
 }) {
+  const dispatch = useDispatch();
+
   return (
     <div
       id="productModal"
@@ -16,7 +20,7 @@ function ProductModal({
       tabIndex="-1"
       aria-labelledby="productModalLabel"
       aria-hidden="true"
-    //   ref={productModalRef}
+      //   ref={productModalRef}
     >
       <div className="modal-dialog modal-xl">
         <div className="modal-content border-0">
