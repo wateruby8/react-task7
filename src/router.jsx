@@ -7,6 +7,9 @@ import Cart from "./views/front/Cart";
 import NotFound from "./views/front/NotFound";
 import Login from "./views/front/Login";
 import Checkout from "./views/front/Checkout";
+import AdminLayout from "./layout/AdminLayout";
+import AdminProducts from "./views/admin/AdminProducts";
+import AdminOrders from "./views/admin/AdminOrders";
 
 export const router = createHashRouter([
   {
@@ -35,6 +38,20 @@ export const router = createHashRouter([
         path:"checkout",
         element:<Checkout />
       }
+    ],
+  },
+  {
+    path: "/admin",
+    element: <AdminLayout />,
+    children: [
+      {
+        path: "product",
+        element: <AdminProducts />,
+      },
+      {
+        path: "order",
+        element: <AdminOrders />,
+      },
     ],
   },
   {

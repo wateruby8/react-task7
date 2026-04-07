@@ -89,7 +89,7 @@ function Login() {
       document.cookie = `loginToken=${token};expires=${new Date(expired)};`;
       axios.defaults.headers.common.Authorization = token;
       // 登入成功
-      navigate("/products");
+      navigate("/admin/product");
     } catch (error) {
       // 登入失敗
       console.log("登入失敗：", error.response?.data);
